@@ -1,0 +1,28 @@
+---
+version: "3.8"
+
+networks:
+    temp-gateway:
+        external: true
+
+volumes:
+    gateway:
+        driver: local
+
+services:
+    
+    gateway:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: gateway
+        hostname: gateway
+        restart: unless-stopped
+        tty: true
+        volumes:
+            - gateway:/var/log/nginx
+        ports:
+            - 80:80
+            - 443:443
+        networks:
+            - temp-gateway
