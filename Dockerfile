@@ -1,3 +1,2 @@
-FROM nginx:stable-alpine3.17-perl
-COPY ./default.conf  /etc/nginx/conf.d
-CMD   ["sh", "-c","nginx -g \"daemon off;\" "]
+FROM  neomn110/nginx:0.0.1
+COPY  ./default.conf  /etc/nginx/http.d/default.conf
