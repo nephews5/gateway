@@ -1,0 +1,25 @@
+---
+version: "3.8"
+
+networks:
+  gateway:
+    external: true
+
+volumes:
+  gateway:
+    driver: local
+
+services:
+    
+  gateway:
+    container_name: gateway
+    hostname: gateway
+    restart: always
+    tty: true
+    volumes:
+        - gateway:/var/log/nginx
+    ports:
+        - 80:80
+        - 443:443
+    networks:
+        - gateway
